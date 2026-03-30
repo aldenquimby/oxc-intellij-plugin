@@ -36,8 +36,8 @@ class OxlintLspServerSupportProvider : LspServerSupportProvider {
             ProjectRootManager.getInstance(project).fileIndex.getContentRootForFile(file) ?: return
         }
 
-        val configurationMode = OxlintSettings.getInstance(project).configurationMode
-        val root = if (configurationMode == ConfigurationMode.AUTOMATIC) {
+        val configMode = OxlintSettings.getInstance(project).configurationMode
+        val root = if (configMode == ConfigurationMode.AUTOMATIC) {
             file.findNearestOxlintConfig(root = projectRoot)?.parent ?: projectRoot
         } else {
             projectRoot
